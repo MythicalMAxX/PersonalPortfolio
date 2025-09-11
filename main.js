@@ -5,29 +5,71 @@
   - Add or remove skills as needed
 */
 const PROFILE = {
-  name: "Your Name",
-  title: "Your Title (e.g., Software Engineer)",
-  shortBio: "A brief and impactful bio about yourself. Talk about your passions, what you do, and what you're looking for.",
-  email: "your.email@example.com",
-  linkedin: "https://linkedin.com/in/your-username",
+  name: "Vinamra Yadav",
+  title: "Associate Software Engineer",
+  shortBio: "A passionate software engineer with experience in developing high-performance backend services, automation scripts, and full-stack applications. Proficient in Go, Python, and modern web technologies like Next.js and React.",
+  email: "myselfvinamrayadav@gmail.com",
+  linkedin: "https://www.linkedin.com/in/vinamrayadav/",
+  github: "https://github.com/MythicalMAxX",
+  workExperience: [
+    {
+      company: "BigOhTech",
+      location: "Noida, Uttar Pradesh",
+      date: "Jan 2025 - Present",
+      title: "Associate Software Engineer",
+      description: "Developed and optimized high-performance backend services using Go, achieving a 40% reduction in response time and improving overall system throughput."
+    },
+    {
+      company: "Grade Up Assignment",
+      location: "Lucknow, Uttar Pradesh",
+      date: "Jun 2024 - Jan 2025",
+      title: "Subject Matter Expert",
+      description: "Developed 100% error-free, step-by-step solutions for computer science topics, including data structures and OOP concepts."
+    },
+    {
+        company: "Zenchi Softwares",
+        location: "Lucknow, Uttar Pradesh",
+        date: "Jan 2023 - Feb 2024",
+        title: "Python Development Intern",
+        description: "Engineered automation scripts using Python and Selenium, increasing operational efficiency by 30%."
+    }
+  ],
   projects: [
     {
-      title: "Project Alpha",
-      description: "A description of your project. What problem does it solve? What technologies did you use?",
+      title: "Costimizer",
+      description: "Optimized cost management processes for multiple cloud providers, achieving a 15% reduction in overall expenditures.",
       link: "#"
     },
     {
-      title: "Project Beta",
-      description: "Another project description. Focus on the impact and your role.",
+      title: "Client Portal & CRM Website",
+      description: "Spearheaded the development of a responsive client-facing website utilizing Next.js and Golang.",
       link: "#"
     },
     {
-      title: "Project Gamma",
-      description: "Showcase a variety of skills and experiences through your projects.",
+      title: "DevBlog",
+      description: "Engineered a platform for real-time article generation that mimics individual writing styles using advanced NLP.",
       link: "#"
     }
   ],
-  skills: ["JavaScript", "React", "Node.js"]
+  education: [
+    {
+      institution: "Babu Banarsi Das Northern India Institute of Technology",
+      degree: "B. Tech (Computer Science Engineering)",
+      date: "Aug 2025"
+    },
+    {
+      institution: "Kendriya Vidyalaya IIM Lucknow",
+      degree: "Senior Secondary (12th)",
+      date: "Jul 2021"
+    }
+  ],
+  skills: ["Python", "Golang", "JavaScript", "React", "Next.js", "Node.js", "LLM", "REST API", "Generative AI", "MySQL", "PostgreSQL", "MongoDB", "Docker", "Kubernetes", "Azure", "GCloud"],
+  achievements: [
+    "Microsoft Learn Student Ambassador",
+    "Google Developer Group On Campus Organizer",
+    "Technical Club Coordinator",
+    "Google Developer Student Club - Web Lead (2022-2023)"
+  ]
 };
 
 // --- APPLICATION LOGIC ---
@@ -65,11 +107,50 @@ function populateContent() {
     PROFILE.skills.forEach(skill => {
         const skillCard = document.createElement('div');
         skillCard.className = 'skill-card scroll-reveal';
+        const iconName = skill.toLowerCase().replace(/[^a-z0-9]/g, '');
         skillCard.innerHTML = `
-            <img src="assets/icon-${skill.toLowerCase().replace(' ', '')}.svg" alt="${skill}" class="skill-icon">
+            <img src="assets/icon-${iconName}.svg" alt="${skill}" class="skill-icon">
             <span>${skill}</span>
         `;
         skillsGrid.appendChild(skillCard);
+    });
+
+    // Work Experience
+    const experienceTimeline = document.getElementById('experience-timeline');
+    PROFILE.workExperience.forEach(item => {
+        const timelineItem = document.createElement('div');
+        timelineItem.className = 'timeline-item scroll-reveal';
+        timelineItem.innerHTML = `
+            <div class="timeline-item-content">
+                <h3>${item.title} @ ${item.company}</h3>
+                <p class="date">${item.date} | ${item.location}</p>
+                <p>${item.description}</p>
+            </div>
+        `;
+        experienceTimeline.appendChild(timelineItem);
+    });
+
+    // Education
+    const educationTimeline = document.getElementById('education-timeline');
+    PROFILE.education.forEach(item => {
+        const timelineItem = document.createElement('div');
+        timelineItem.className = 'timeline-item scroll-reveal';
+        timelineItem.innerHTML = `
+            <div class="timeline-item-content">
+                <h3>${item.degree}</h3>
+                <p class="date">${item.institution} | ${item.date}</p>
+            </div>
+        `;
+        educationTimeline.appendChild(timelineItem);
+    });
+
+    // Achievements
+    const achievementsList = document.getElementById('achievements-list');
+    PROFILE.achievements.forEach(achievement => {
+        const listItem = document.createElement('li');
+        listItem.className = 'scroll-reveal';
+        listItem.textContent = achievement;
+        achievementsList.appendChild(listItem);
     });
 
     // Contact
@@ -77,6 +158,7 @@ function populateContent() {
     contactLinks.innerHTML = `
         <a href="mailto:${PROFILE.email}">Email</a>
         <a href="${PROFILE.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="${PROFILE.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
     `;
 
     // Footer
