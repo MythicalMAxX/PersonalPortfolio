@@ -3,85 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Creative Developer</title>
+    <title>Your Name | Your Title</title> <!-- This will be populated by JS -->
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Fira+Code&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-    <div class="clouds"></div>
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
 
-    <header class="header">
-        <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <div class="background-container">
+        <div class="blob"></div>
+    </div>
 
-    <main class="container">
-        <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h1 id="profile-name" class="glitch" data-text="Your Name">Your Name</h1>
-                <p id="profile-title" class="fade-in">Creative Developer & Designer</p>
-                <a id="resume-button" href="assets/resume.pdf" class="cta-button" target="_blank" rel="noopener noreferrer">View Resume</a>
+    <div class="container">
+        <header class="main-header">
+            <nav>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="hero" class="hero-section">
+                <div class="hero-content">
+                    <h1 id="hero-name" class="hero-name" data-text="Your Name">Your Name</h1>
+                    <p id="hero-title" class="hero-title"></p>
+                    <div class="hero-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-button red"></div>
+                            <div class="terminal-button yellow"></div>
+                            <div class="terminal-button green"></div>
+                        </div>
+                        <div class="terminal-body">
+                            <p>$ <span id="terminal-text"></span><span class="cursor"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="content-section">
+                <p id="profile-bio" class="about-bio"></p>
+            </section>
+
+            <section id="projects" class="content-section">
+                <h2 class="section-title">Selected Projects</h2>
+                <div id="projects-grid" class="projects-grid">
+                    <!-- Project cards will be injected here by JS -->
+                </div>
+            </section>
+
+            <section id="skills" class="content-section">
+                <h2 class="section-title">Skills</h2>
+                <div id="skills-grid" class="skills-grid">
+                    <!-- Skill icons will be injected here by JS -->
+                </div>
+            </section>
+
+            <section id="contact" class="content-section">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="contact-text">I'm always open to discussing new projects or opportunities. Feel free to reach out!</p>
+                <div id="contact-links" class="contact-links">
+                    <!-- Contact links will be dynamically inserted here -->
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-content">
+                <p>&copy; <span id="footer-year">2024</span> <span id="footer-name">Your Name</span>. All rights reserved.</p>
+                <a id="resume-link" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-link">View Resume</a>
             </div>
-        </section>
-
-        <section id="about" class="content-section">
-            <h2>About Me</h2>
-            <p id="profile-bio">Loading bio...</p>
-        </section>
-
-        <section id="projects" class="content-section">
-            <h2>My Work</h2>
-            <div id="projects-container" class="projects-grid">
-                <!-- Projects will be dynamically inserted here -->
-            </div>
-        </section>
-
-        <section id="experience" class="content-section">
-            <h2>Work Experience</h2>
-            <div id="experience-container" class="timeline">
-                <!-- Experience will be dynamically inserted here -->
-            </div>
-        </section>
-
-        <section id="education" class="content-section">
-            <h2>Education</h2>
-            <div id="education-container" class="timeline">
-                <!-- Education will be dynamically inserted here -->
-            </div>
-        </section>
-
-        <section id="skills" class="content-section">
-            <h2>Skills</h2>
-            <div id="skills-container" class="skills-grid">
-                <!-- Skills will be dynamically inserted here -->
-            </div>
-        </section>
-
-        <section id="achievements" class="content-section">
-            <h2>Achievements</h2>
-            <ul id="achievements-container" class="achievements-list">
-                <!-- Achievements will be dynamically inserted here -->
-            </ul>
-        </section>
-
-        <section id="contact" class="content-section">
-            <h2>Get In Touch</h2>
-            <div id="contact-links" class="social-links">
-                <!-- Contact links will be dynamically inserted here -->
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p>&copy; 2024 <span id="footer-name">Your Name</span>. All rights reserved.</p>
-    </footer>
+        </footer>
+    </div>
 
     <script src="main.js"></script>
 </body>
