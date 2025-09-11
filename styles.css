@@ -1,0 +1,432 @@
+/* ---
+Base Styles & Theming
+--- */
+:root {
+  --primary-color: #a855f7; /* Purple */
+  --secondary-color: #fde047; /* Yellow */
+  --background-color: #111827; /* Dark Blue/Gray */
+  --text-color: #e5e7eb; /* Light Gray */
+  --card-background: rgba(31, 41, 55, 0.5); /* Semi-transparent dark gray */
+  --border-color: rgba(255, 255, 255, 0.1);
+  --font-family: 'Space Grotesk', sans-serif;
+  --transition-speed: 0.3s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ---
+Animated Background
+--- */
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+
+.stars, .twinkling, .clouds {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  display:block;
+  z-index: -1;
+}
+
+.stars {
+ background:#000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+ z-index:-3;
+}
+
+.twinkling{
+ background:transparent url(https://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+ z-index:-2;
+ animation:move-twink-back 200s linear infinite;
+}
+
+.clouds{
+    background:transparent url(https://www.script-tutorials.com/demos/360/images/clouds.png) repeat top center;
+    z-index:-1;
+    animation:move-clouds-back 200s linear infinite;
+}
+
+/* ---
+Layout & General
+--- */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1, h2 {
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* ---
+Header & Navigation
+--- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  text-align: center;
+}
+
+.header nav a {
+  color: var(--text-color);
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.header nav a:hover {
+  color: var(--primary-color);
+}
+
+/* ---
+Hero Section
+--- */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+    animation: fadeIn 2s ease-in-out;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 1.5rem;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
+}
+
+/* ---
+Content Sections
+--- */
+.content-section {
+  padding: 6rem 0;
+}
+
+/* ---
+Projects Section
+--- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  backdrop-filter: blur(5px);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.project-card h3 {
+    margin-top: 0;
+    color: var(--text-color);
+}
+
+.project-card .stack {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.project-card .stack span {
+    background: rgba(168, 85, 247, 0.2);
+    color: var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+/* ---
+Contact Section
+--- */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  transition: color var(--transition-speed), transform var(--transition-speed);
+  display: inline-block; /* For transform to work */
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+.social-links svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* ---
+Footer
+--- */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+/* ---
+Experience & Education Timeline
+--- */
+.timeline {
+    position: relative;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1.5px;
+}
+
+.timeline-item {
+    padding: 1rem 2.5rem;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-item.left {
+    left: 0;
+    padding-right: 50px;
+}
+
+.timeline-item.right {
+    left: 50%;
+    padding-left: 50px;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: var(--background-color);
+    border: 4px solid var(--primary-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item.right::after {
+    left: -10px;
+}
+
+.timeline-content {
+    padding: 1.5rem;
+    background: var(--card-background);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+}
+
+.timeline-content .date {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* ---
+Skills Section
+--- */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.skill-tag {
+    background: var(--card-background);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-speed);
+}
+
+.skill-tag:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* ---
+Achievements Section
+--- */
+.achievements-list {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.achievements-list li {
+    background: var(--card-background);
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.5rem;
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+
+/* ---
+Animations
+--- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* Glitch effect for hero name */
+.glitch {
+    position: relative;
+    color: var(--secondary-color);
+}
+
+.glitch:before, .glitch:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-color);
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+}
+
+.glitch:before {
+    left: 2px;
+    text-shadow: -2px 0 var(--primary-color);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch:after {
+    left: -2px;
+    text-shadow: -2px 0 var(--secondary-color), 2px 2px var(--primary-color);
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip: rect(42px, 9999px, 44px, 0); }
+    5% { clip: rect(12px, 9999px, 60px, 0); }
+    10% { clip: rect(40px, 9999px, 42px, 0); }
+    /* ... add more steps for a more complex glitch ... */
+    100% { clip: rect(50px, 9999px, 52px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip: rect(2px, 9999px, 98px, 0); }
+    /* ... add more steps ... */
+    100% { clip: rect(90px, 9999px, 92px, 0); }
+}
+
+/* ---
+Responsive Design
+--- */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
+  .header { padding: 1rem; }
+  .container { padding: 1.5rem; }
+}
